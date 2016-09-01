@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Личный сайт студента GeekBrains</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript">
+
+	function agent() {
+		var a = parseInt(Math.random() * 10) ;
+
+		for (var i = 5; i > 0; i--) {
+				var userAnswer = parseInt(prompt("Угадай число от 0 до 10"));
+
+				if (a == userAnswer) {
+						alert ("Поздравляю")
+		        break;
+				}
+
+				else if (userAnswer < a) {
+					alert ("Слишком маленькое число")
+				}
+		    else if (userAnswer > a) {
+					alert ("Слишком большое число")
+				}
+			}
+		}
+	// var a = parseInt(Math.random() * 10) ;
+	//
+	// for (var i = 5; i > 0; i--) {
+	// 		var userAnswer = document.getElementById('answer1').value;
+	//
+	// 		if (a == userAnswer) {
+	// 				alert ("Поздравляю")
+	//         break;
+	// 		}
+	//
+	// 		else if (userAnswer < a) {
+	// 			document.write ("Слишком маленькое число")
+	// 		}
+	//     else if (userAnswer > a) {
+	// 			document.write ("Слишком большое число")
+	// 		}
+	// }
+	//
+	// alert ("Загаданное число " + a);
+
+	// function agent() {
+	// 	var a = document.getElementById('answer1').value;
+	// 	if (a == "капуста" || a == "Капуста" ) {
+	// 		alert (a + "   Вы угадали");
+	// 	}
+	// 	else {
+	// 		alert (a + "   Вы не угадали");
+	// 	}
+
+	//}
+
+
+	</script>
+</head>
+<body>
+
+	<div id="header">
+
+		<a href="index.html">Главная</a> <span>/</span>
+		<a href="zagadki.html">Загадки</a> <span>/</span>
+		<a href="ugadaika.html">Угадайка</a> <span>/</span>
+		<a href="blackJack.html">Black Jack</a> <span>/</span>
+	</div>
+
+	<div id="content">
+		<h1><b>Личный сайт студента GeekBrains<b></h1>
+		<div id="center">
+
+			<div id="box">
+				<h3><b>Угадайка</b></h3>
+				<p><b>Отгадай число от 0 до 10, которое загадал компьютер!</b></p>
+				<!-- <input type="text" id="answer1"><br> -->
+				<a href="#" onclick="agent()">Играем?</a>
+
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">
+	Copyright © 2016 <a href="https://geekbrains.ru/">GeekBrains </a>
+	</div>
+
+</body>
+</html>

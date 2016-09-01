@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Личный сайт студента GeekBrains</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript">
+
+	function agent() {
+    do {
+
+
+    function getRandomInt (min, max) {
+        return Math.floor (Math.random () * (max - min + 1)) + min
+    }
+
+    function getCard() {
+      var cards = ["6", "7", "8", "9", "10", "J", "Q","K", "A"]
+      return cards[getRandomInt(0, cards.length - 1)]
+    }
+
+    function getSum(hand) {
+      var sum = 0;
+      for (var i = 0; i < hand.length; i++) {
+        var card  = hand[i];
+        if (card != "A") {
+
+            if (card == "J" || card == "Q" || card == "K"){
+            card = 10;
+            sum = sum + card;
+              }
+
+            else {
+              sum = sum +parseInt(card)
+            }
+
+        }
+
+      }
+
+      for (var i = 0; i < hand.length; i++) {
+        var card  = hand[i];
+        if (card == "A") {
+          if (sum>10) {
+            sum = sum + 1;
+          }
+          else {
+            sum = sum + 11;
+          }
+
+        }
+      }
+      return sum
+    }
+
+
+    var dealer = [getCard()];
+    var player = [getCard(), getCard()];
+
+    function getStatus() {
+      return 'Дилер ' + dealer.join(' ') + " Сумма " + getSum(dealer) + '\nИгрок ' + player.join(' ')+ " Сумма " + getSum(player)
+    }
+
+
+    var answer = "";
+
+    if (getSum(player) == 21) {
+      alert (getStatus() + " BlackJack на раздаче! Вы выиграли");
+      //break;
+
+    }
+    else {
+    var result = false;
+    do {
+      answer = prompt((getStatus()) + " \nХотите еще карту? 1 - да, иначе - нет");
+          if (answer == '1') {
+          player.push(getCard());
+            if (getSum(player) > 21) {
+              alert (getStatus() + " Перебор! Вы проиграли!!!");
+              result = true;
+              break;
+            }
+            else if (getSum(player) == 21) {
+              alert (getStatus() + "Вы выиграли!!!");
+                result = true;
+              break;
+
+            }
+          }
+
+
+
+    } while (answer == '1' );
+    }
+
+    if (getSum(dealer) <= 17 &&   result == false) {
+
+
+
+      while (getSum(dealer) <= 17) {
+      dealer.push(getCard());
+
+      }
+      if (getSum(dealer) < getSum(player) && getSum(dealer) < 21 && getSum(player) < 21 || (getSum(dealer)> 21 && getSum(player) < 21)) {
+        alert (getStatus() + " Вы выиграли!!!");
+
+      }
+      else if ((getSum(dealer) > 21 && getSum(player) > 21) || (getSum(dealer) == getSum(player))) {
+        alert (getStatus() + " Ничья!!!");
+      }
+      else {
+        alert (getStatus() + " Вы проиграли!!!");
+      }
+    }
+    var ask1 = prompt("Сыграем? \nДля продолжения нажмите ОК.      Для выхода введите Q").toLowerCase()
+    }
+    while (ask1 != "q" ) ;
+
+
+
+		}
+
+
+	</script>
+</head>
+<body>
+
+	<div id="header">
+
+		<a href="index.html">Главная</a> <span>/</span>
+		<a href="zagadki.html">Загадки</a> <span>/</span>
+		<a href="ugadaika.html">Угадайка</a> <span>/</span>
+		<a href="blackJack.html">Black Jack</a> <span>/</span>
+	</div>
+
+	<div id="content">
+		<h1><b>Личный сайт студента GeekBrains<b></h1>
+		<div id="center">
+
+			<div id="box">
+				<h3><b>BlackJack</b></h3>
+				<p><b>Сыграем?</b></p>
+				<!-- <input type="text" id="answer1"><br> -->
+				<a href="#" onclick="agent()">Начать</a>
+
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">
+	Copyright © 2016 <a href="https://www.facebook.com/profile.php?id=100001824576453">Ilya Potochnyak </a>
+	</div>
+
+</body>
+</html>
